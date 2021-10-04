@@ -17,7 +17,7 @@ spec:
     - host: gov-cio.test
       http:
         paths:
-          - path: /assessment
+          - path: /actuator
             backend:
               serviceName: rpi-demo-app
               servicePort: 9090
