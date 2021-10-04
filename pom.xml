@@ -185,16 +185,6 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>Push Docker image</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>${basedir}/push-image.sh</executable>
-						</configuration>
-					</execution>
-					<execution>
 						<id>Deploy to K8S or Minikube</id>
 						<phase>pre-integration-test</phase>
 						<goals>
