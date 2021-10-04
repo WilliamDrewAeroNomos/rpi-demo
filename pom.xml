@@ -26,6 +26,9 @@
 		<findbugs.maven.plugin.version>3.0.5</findbugs.maven.plugin.version>
 		<exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
 
+		<!-- Platform for K8S deployment -->
+		<k8s-target>local</k8s-target>
+
 	</properties>
 
 	<profiles>
@@ -194,23 +197,23 @@
 							<executable>${basedir}/deploy-application.sh</executable>
 						</configuration>
 					</execution>
-					<!-- <execution> -->
-					<!-- <id>Validate ingress end point</id> -->
-					<!-- <phase>pre-integration-test</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>exec</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <executable>${basedir}/check-endpoint.sh</executable> -->
-					<!-- <arguments> -->
-					<!-- <argument>assessment-service-ingress</argument> -->
-					<!-- <argument>kube-system</argument> -->
-					<!-- <argument>10</argument> -->
-					<!-- <argument>10</argument> -->
-					<!-- <argument>${k8s-target}</argument> -->
-					<!-- </arguments> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
+					<execution>
+						<id>Validate ingress end point</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${basedir}/check-endpoint.sh</executable>
+							<arguments>
+								<argument>rpi-demo-ingress</argument>
+								<argument>kube-system</argument>
+								<argument>10</argument>
+								<argument>10</argument>
+								<argument>${k8s-target}</argument>
+							</arguments>
+						</configuration>
+					</execution>
 					<!-- <execution> -->
 					<!-- <id>Validate service availability</id> -->
 					<!-- <phase>pre-integration-test</phase> -->
