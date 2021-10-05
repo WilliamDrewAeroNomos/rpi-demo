@@ -35,6 +35,7 @@
 		<profile>
 			<id>dev</id>
 		</profile>
+		
 		<!-- Executes unit and integration tests -->
 
 		<profile>
@@ -184,7 +185,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>${basedir}/build-image.sh</executable>
+							<executable>${basedir}/build-and-push-image.sh</executable>
 						</configuration>
 					</execution>
 					<execution>
@@ -214,21 +215,21 @@
 							</arguments>
 						</configuration>
 					</execution>
-					<!-- <execution> -->
-					<!-- <id>Validate service availability</id> -->
-					<!-- <phase>pre-integration-test</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>exec</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <executable>${basedir}/check-service.sh</executable> -->
-					<!-- <arguments> -->
-					<!-- <argument>http://gov-cio.test/assessment/healthz</argument> -->
-					<!-- <argument>10</argument> -->
-					<!-- <argument>10</argument> -->
-					<!-- </arguments> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
+					<execution>
+						<id>Validate service availability</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${basedir}/check-service.sh</executable>
+							<arguments>
+								<argument>http://k8s-master-node/actuator/health</argument>
+								<argument>10</argument>
+								<argument>10</argument>
+							</arguments>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 
