@@ -9,7 +9,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: rpi-demo-ingress
-  namespace: kube-system
+  namespace: rpi
   annotations:
     #nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
@@ -31,7 +31,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rpi-demo-app
-  namespace: kube-system
+  namespace: rpi 
 spec:
   externalName: rpi-demo-app.rpi.svc.cluster.local
   type: ExternalName
