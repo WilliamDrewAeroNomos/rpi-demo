@@ -208,7 +208,7 @@
 							<executable>${basedir}/check-endpoint.sh</executable>
 							<arguments>
 								<argument>rpi-demo-ingress</argument>
-								<argument>kube-system</argument>
+								<argument>rpi</argument>
 								<argument>10</argument>
 								<argument>10</argument>
 								<argument>${k8s-target}</argument>
