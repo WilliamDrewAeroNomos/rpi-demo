@@ -14,7 +14,8 @@ metadata:
     #nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
-    - http:
+    - host: k8s-master-node
+      http:
         paths:
           - path: /actuator
             pathType: Prefix
@@ -32,7 +33,7 @@ metadata:
   name: rpi-demo-app
   namespace: kube-system 
 spec:
-  externalName: rpi-demo-app.rpi.svc.cluster.local
+  externalName: rpi-demo-app.svc.cluster.local
   type: ExternalName
   
 --- 
