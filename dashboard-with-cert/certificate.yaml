@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kubernetes-dashboard
+  namespace: kube-system
+spec:
+  secretName: certificate-prod-dashboard
+  dnsNames:
+    - k8s-master-node 
+  issuerRef:
+    name: clusterissuer-le
+    kind: ClusterIssuer
