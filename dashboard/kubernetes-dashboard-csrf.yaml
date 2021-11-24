@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  csrf: +VOdhTcZpo7h/3CVM+Wvu6rp7yPbcJ7v+6r4eOFjtUeK2aNgUeQYAGz/GUcjAHxLkRRnki+DoIGcPjJmlP95Y9Ha26L0WRM8ABwPOauGe+EZPGJztKguZRrfGPCapi0yAGi+NGFPGNP+J0a8AiexCp8vLDU5R3NONUT3Q0YMiO0pI8bbnuU9AA3ul6WwGoYZNuWp+VoFD3pq3wOGGK3ym8JPrH9/kMmWzr2RSrV8zOn6DnFon5C3eVB55zb/ls8Hz8eBoJPMdg02ABZFtVNECk+Pb9HEdyDjZ1ZKCml2G70hYC2gW2AgqVpyrG9hzSklss0fjc2CrEXdWo25MyCYsw==
+kind: Secret
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"csrf":""},"kind":"Secret","metadata":{"annotations":{},"labels":{"k8s-app":"kubernetes-dashboard"},"name":"kubernetes-dashboard-csrf","namespace":"kube-system"},"type":"Opaque"}
+  creationTimestamp: "2021-11-24T12:25:25Z"
+  labels:
+    k8s-app: kubernetes-dashboard
+  name: kubernetes-dashboard-csrf
+  namespace: kube-system
+  resourceVersion: "707189"
+  selfLink: /api/v1/namespaces/kube-system/secrets/kubernetes-dashboard-csrf
+  uid: 530dd35a-a3a8-42ed-acbe-78dcf12d5d40
+type: Opaque

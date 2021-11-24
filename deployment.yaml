@@ -65,7 +65,7 @@ metadata:
   name: rpi-demo-app
 #  namespace: rpi
 spec:
-  replicas: 1
+  replicas: 12
   selector:
     matchLabels:
       app: rpi-demo-app
