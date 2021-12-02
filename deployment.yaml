@@ -83,5 +83,25 @@ spec:
             - containerPort: 8778
               name: jolokia
               protocol: TCP
+          # Can NOT get this to work with the actuator
+          #startupProbe:
+          #    httpGet:
+          #       httpHeaders:
+          #        - name: status
+          #          value: Up
+          #       path: /actuator/health/readiness
+          #       port: 8080
+          #    failureThreshold: 30
+          #    periodSeconds: 10          
+          #livenessProbe:
+          # Spring Boot's actuator as a liveness probe check
+          #   httpGet:
+          #     path: /actuator/health/liveness
+          #     port: 8080
+          #     # How long to wait until the liveness check should kick it.
+          #   initialDelaySeconds: 10
+          #   # Seems excessive but pulling the image on the PI takes some time 
+          #   failureThreshold: 30
+          #   periodSeconds: 15
       priorityClassName: high-priority
        
