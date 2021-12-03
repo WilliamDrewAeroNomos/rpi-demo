@@ -1,7 +1,7 @@
 apiVersion : v1 
 kind : Node 
 metadata: 
-  name: master 
+  name: k8s-master-node
 spec: 
   taints: 
    - effect: NoSchedule 
