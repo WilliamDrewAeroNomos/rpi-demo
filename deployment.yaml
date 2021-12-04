@@ -74,7 +74,7 @@ metadata:
   name: rpi-demo-app
   namespace: rpi
 spec:
-  replicas: 4
+  replicas: 5
   selector:
     matchLabels:
       app: rpi-demo-app
@@ -84,36 +84,36 @@ spec:
         app: rpi-demo-app
     spec:
       containers:
-        - name: rpi-demo-app
-          image: williamdrew/rpi-demo:latest
-          imagePullPolicy: Always
-          resources : 
-            requests : 
-               cpu : 200m 
-               memory : 200Mi
-            limits:
-               cpu : 200m 
-               memory : 200Mi            
-          ports:
-            - containerPort: 8080
-              name: http
-              protocol: TCP
-            - containerPort: 9779
-              name: prometheus
-              protocol: TCP
-            - containerPort: 8778
-              name: jolokia
-              protocol: TCP
-          lifecycle:
-            # Log to a file indicating the application can start - just a prototype
-            postStart:
-              exec:
-                command:
-                   - sh
-                   - -c
-                   - echo "Wake up!" > /opt/postStart-done
-            preStop:
-              httpGet:
+      - name: rpi-demo-app
+        image: williamdrew/rpi-demo:latest
+        imagePullPolicy: Always
+        resources : 
+          requests : 
+            cpu : 200m 
+            memory : 200Mi
+          limits:
+            cpu : 200m 
+            memory : 200Mi            
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 9779
+          name: prometheus
+          protocol: TCP
+        - containerPort: 8778
+          name: jolokia
+          protocol: TCP
+        lifecycle:
+        # Log to a file indicating the application can start - just a prototype
+           postStart:
+             exec:
+               command:
+                - sh
+                - -c
+                - echo "Wake up!" > /opt/postStart-done
+           preStop:
+             httpGet:
                 port: 8080
                 path: /lifecycle/shutdown
       priorityClassName: high-priority
