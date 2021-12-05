@@ -83,6 +83,19 @@ spec:
       labels:
         app: rpi-demo-app
     spec:
+      initContainers:
+      - name: download
+        image: williamdrew/rpi-demo:latest
+        # Clone an HTML page to be served
+        command:
+        - git
+        - clone
+        - https://github.com/mdn/beginner-html-site-scripted
+        - /var/lib/data
+        # Shared volume with main container
+        volumeMounts:
+        - mountPath: /var/lib/data
+          name: source    
       containers:
       - name: rpi-demo-app
         image: williamdrew/rpi-demo:latest
@@ -104,6 +117,9 @@ spec:
         - containerPort: 8778
           name: jolokia
           protocol: TCP
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: source
         lifecycle:
         # Log to a file indicating the application can start - just a prototype
            postStart:
@@ -116,6 +132,9 @@ spec:
              httpGet:
                 port: 8080
                 path: /lifecycle/shutdown
+      volumes:
+        - emptyDir: {}
+          name: source
       priorityClassName: high-priority
       
        
