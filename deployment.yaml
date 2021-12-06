@@ -86,6 +86,14 @@ spec:
       initContainers:
       - name: download
         image: williamdrew/rpi-demo:latest
+        imagePullPolicy: Always
+        resources : 
+          requests : 
+            cpu : 200m 
+            memory : 200Mi
+          limits:
+            cpu : 200m 
+            memory : 200Mi  
         # Clone an HTML page to be served
         command:
         - git
