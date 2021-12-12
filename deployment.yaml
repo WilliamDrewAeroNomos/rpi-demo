@@ -16,7 +16,7 @@ spec:
     kind: Deployment
     name: rpi-demo-app
   maxReplicas: 20
-  minReplicas: 5
+  minReplicas: 1
   metrics:
   - resource:
       name: cpu
@@ -64,8 +64,8 @@ spec:
     matchLabels:
       # Used for counting active Pods for which this PDB is used
       app: rpi-demo-app
-  # At least 2 need to be available at any time
-  minAvailable: 2
+  # At least 1 to be available at any time
+  minAvailable: 1
 ---
 # rpi-demo-app
 apiVersion: v1
@@ -95,7 +95,6 @@ metadata:
   name: rpi-demo-app
   namespace: rpi
 spec:
-  replicas: 5
   selector:
     matchLabels:
       app: rpi-demo-app
